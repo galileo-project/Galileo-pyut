@@ -1,5 +1,5 @@
 class Result(object):
-    __TEST_FUNC   = "%-7s: Module: %-10s, function: %-10s"
+    __TEST_FUNC   = "%-7s: Module: %-10s function: %-10s"
     __TEST_DESC   = "%-7s: %s"
     __SUCCESS     = "SUCCESS"
     __FAILED      = "FAILED"
