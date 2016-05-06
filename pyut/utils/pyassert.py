@@ -12,30 +12,32 @@ def eq(lhs, rhs):
         if not lhs() == rhs():
             raise TestEQException()
         else:
-            pass
+            return True
     else:
         if not lhs == rhs:
             raise TestEQException()
         else:
-            pass
-
+            return True
 
 def it(val):
     if hasattr(val, "__cal__"):
         ret = val()
-        if not ret:
+        if ret is False:
             raise TestITException()
         else:
-            return ret
+            return True
     else:
-        if val:
-            return val
+        if val is True:
+            return True
         else:
             raise TestITException()
 
-def desc(desc, test_func):
+def desc(desc, lhs_func, rhs_func = None):
     try:
-        ret = test_func()
+        if rhs_func is None:
+            ret = it(lhs_func)
+        else:
+            ret = eq(lhs_func, rhs_func)
     except:
         ret = False
 
