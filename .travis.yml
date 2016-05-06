@@ -7,7 +7,7 @@ python:
 
 script:
     - sudo python setup.py install
-    - sudo python test/test.py
+    - cd test && sudo python test.py
 
 notifications:
   email: false
