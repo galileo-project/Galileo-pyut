@@ -9,7 +9,13 @@ def eq(lhs, rhs):
         raise TestEQException()
 
     if is_func:
-        if not lhs() == rhs():
+        try:
+            lhs_ret = lhs()
+            rhs_ret = rhs()
+        except:
+            raise TestEQException()
+
+        if not lhs_ret == rhs_ret:
             raise TestEQException()
         else:
             return True
@@ -21,11 +27,15 @@ def eq(lhs, rhs):
 
 def it(val):
     if hasattr(val, "__cal__"):
-        ret = val()
-        if ret is False:
+        try:
+            ret = val()
+        except:
             raise TestITException()
-        else:
+
+        if ret is True:
             return True
+        else:
+            raise TestITException()
     else:
         if val is True:
             return True
