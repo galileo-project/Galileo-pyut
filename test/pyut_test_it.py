@@ -6,6 +6,5 @@ def pyut_test_eq_val():
 def test_func():
     return True
 
-
 def pyut_test_eq_func():
     it(test_func)
