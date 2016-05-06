@@ -17,14 +17,17 @@ Python unit test framework
     
 ## Usage
 
-    project
-    test
+**project structure**
+
+    |..
+    |--project
+    |--test
         |--__init__.py
         |--test.py
         |--pyut_some_module.py
         |--pyut_other_module.py
 
-test.py
+**test.py**
     
 ```python
 from pyut import testing
@@ -48,7 +51,7 @@ if __name__ == "__main__":
     
 ```
 
-pyut_some_module.py
+**pyut_some_module.py**
 
 ```python
 from pyut import eq
