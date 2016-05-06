@@ -26,7 +26,7 @@ def eq(lhs, rhs):
             return True
 
 def it(val):
-    if hasattr(val, "__cal__"):
+    if hasattr(val, "__call__"):
         try:
             ret = val()
         except:
