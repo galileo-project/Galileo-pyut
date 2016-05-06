@@ -9,33 +9,45 @@ def eq(lhs, rhs):
         raise TestEQException()
 
     if is_func:
-        if not lhs() == rhs():
+        try:
+            lhs_ret = lhs()
+            rhs_ret = rhs()
+        except:
+            raise TestEQException()
+
+        if not lhs_ret == rhs_ret:
             raise TestEQException()
         else:
-            pass
+            return True
     else:
         if not lhs == rhs:
             raise TestEQException()
         else:
-            pass
-
+            return True
 
 def it(val):
-    if hasattr(val, "__cal__"):
-        ret = val()
-        if not ret:
+    if hasattr(val, "__call__"):
+        try:
+            ret = val()
+        except:
             raise TestITException()
+
+        if ret is True:
+            return True
         else:
-            return ret
+            raise TestITException()
     else:
-        if val:
-            return val
+        if val is True:
+            return True
         else:
             raise TestITException()
 
-def desc(desc, test_func):
+def desc(desc, lhs_func, rhs_func = None):
     try:
-        ret = test_func()
+        if rhs_func is None:
+            ret = it(lhs_func)
+        else:
+            ret = eq(lhs_func, rhs_func)
     except:
         ret = False
 
